@@ -77,7 +77,7 @@ El proyecto sigue parcialmente una estructura inspirada en el patrón **Modelo-V
 - **Controlador**: Clases que validan datos, gestionan flujos y excepciones.
 - **Modelo**: Implementado de forma sencilla mediante clases que acceden a archivos `.txt`.
 
-> ⚠️ Nota: Dado que es un proyecto educativo limitado por el temario del curso, **no se implementó MVC al 100%**, pero se respetaron sus principios fundamentales siempre que fue posible.
+> ⚠️ Nota: Dado que es un proyecto educativo limitado por el temario del curso, **no se implementó MVC al 100%** por limitaciones del modelo.
 
 ---
 
