@@ -1,4 +1,4 @@
-# Simulador de Billetera Auxiliar
+8# Simulador de Billetera Auxiliar
 
 > ⚠️ Este proyecto está en desarrollo activo. Algunas funcionalidades, nombres o estructuras pueden cambiar conforme avance la implementación y mejora del mismo.
 
@@ -91,7 +91,7 @@ El proyecto sigue parcialmente una estructura inspirada en el patrón **Modelo-V
 
 ## 👤 Autor
 
-**A-Dryan**\
+**adriandlca**\
 Estudiante de Ingeniería de Sistemas\
 Universidad Nacional Mayor de San Marcos
 
