@@ -6,6 +6,7 @@ package vistas;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import modelos.EscribirArchivoTransacciones;
 
 /**
  *
@@ -64,6 +65,11 @@ public class JPantallaPagarPorNumero extends javax.swing.JFrame {
         jLabel3.setText("Monto:");
 
         jbtnPagar.setText("Pagar");
+        jbtnPagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnPagarActionPerformed(evt);
+            }
+        });
 
         jbtnCancelar.setText("Cancelar");
         jbtnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -135,6 +141,11 @@ public class JPantallaPagarPorNumero extends javax.swing.JFrame {
     private void jbtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_jbtnCancelarActionPerformed
+
+    private void jbtnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPagarActionPerformed
+        EscribirArchivoTransacciones archivo = new EscribirArchivoTransacciones();
+        archivo.EscribirArchivo(999888111, 1200.00, "Pago de cevichito", "Telefono");//prueba de escritura
+    }//GEN-LAST:event_jbtnPagarActionPerformed
 
     /**
      * @param args the command line arguments

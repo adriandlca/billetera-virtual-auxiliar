@@ -9,22 +9,13 @@ import java.io.PrintWriter;
 import javax.swing.JOptionPane;
 
 public class EscribirArchivoTransacciones {
-    private int numTelefoNroCuenta;
-    private int monto;
-    private String Descripcion;
-    private String tipoTransaccion;
-
-    public EscribirArchivoTransacciones(int numTelefoNroCuenta, int monto, String Descripcion, String tipoTransaccion) {
-        this.numTelefoNroCuenta = numTelefoNroCuenta;
-        this.monto = monto;
-        this.Descripcion = Descripcion;
-        this.tipoTransaccion = tipoTransaccion;
-    }
     
-    public void EscribirArchivo(){
+    public void EscribirArchivo(int numTelefoNroCuenta, double monto, String Descripcion, String tipoTransaccion){
         try{
             FileWriter fw = new FileWriter("Transacciones.txt",true);
             PrintWriter pw = new PrintWriter(fw);
+            pw.println(numTelefoNroCuenta+","+monto+","+Descripcion+","+tipoTransaccion);
+            pw.close();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error en la lectura dle archivo...");
         }    
