@@ -4,21 +4,28 @@
  */
 package modelos;
 
-/**
- *
- * @author HP SUPPORT
- */
+import java.util.ArrayList;
+import modelos.Transaccion;
+
+
 public class Usuario {
     private String nombre;
     private int numeroTelef;
     private double sueldo;
     private String PIN;
-
+    private ArrayList<Transaccion> transacciones;
+    
     public Usuario(String nombre, int numeroTelef, double sueldo, String PIN) {
+        transacciones = new ArrayList<Transaccion>();
         this.nombre = nombre;
         this.numeroTelef = numeroTelef;
         this.sueldo = sueldo;
         this.PIN = PIN;
+    }
+    
+    public void registrarTransaccion(int numTelefoNroCuenta, int monto, String Descripcion, String tipoTransaccion){
+        Transaccion tra = new Transaccion(numTelefoNroCuenta,monto,Descripcion,tipoTransaccion);
+        transacciones.add(tra);
     }
     
     public void mostrarUsuario(){
