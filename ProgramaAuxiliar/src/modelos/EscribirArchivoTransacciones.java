@@ -4,6 +4,10 @@
  */
 package modelos;
 
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import javax.swing.JOptionPane;
+
 public class EscribirArchivoTransacciones {
     private int numTelefoNroCuenta;
     private int monto;
@@ -18,7 +22,12 @@ public class EscribirArchivoTransacciones {
     }
     
     public void EscribirArchivo(){
-        
+        try{
+            FileWriter fw = new FileWriter("Transacciones.txt",true);
+            PrintWriter pw = new PrintWriter(fw);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error en la lectura dle archivo...");
+        }    
     }
     
 }
