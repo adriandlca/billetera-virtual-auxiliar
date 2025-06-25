@@ -12,7 +12,7 @@ import java.util.StringTokenizer;
 
 
 public class LeerArchivoUsuario {
-    private Usuario user;
+
     private String nombre;
     private int numeroTelef;
     private double sueldo;
@@ -35,14 +35,27 @@ public class LeerArchivoUsuario {
                numeroTelef = Integer.parseInt(st.nextToken());
                sueldo = Double.parseDouble(st.nextToken());
                PIN = st.nextToken();
-               user = new Usuario(nombre,numeroTelef,sueldo,PIN);
                //user.mostrarUsuario(); -> solo para ver que se ejecte sin problemas
            }
         }catch(IOException e){
             throw new LoadUserFileException("No se cargó de manera correcta");
         }
-        
-        
-     
     }   
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getNumeroTelef() {
+        return numeroTelef;
+    }
+
+    public double getSueldo() {
+        return sueldo;
+    }
+
+    public String getPIN() {
+        return PIN;
+    }
+    
 }

@@ -28,10 +28,26 @@ public class Usuario {
         transacciones.add(tra);
     }
     
-    public void mostrarUsuario(){
-        System.out.println("nombre: "+this.nombre);
-        System.out.println("numero de telefono: "+this.numeroTelef);
-        System.out.println("sueldo: "+this.sueldo);
-        System.out.println("PIN: "+this.PIN);
+
+    public String getNombre() {
+        return nombre;
     }
+
+    public int getNumeroTelef() {
+        return numeroTelef;
+    }
+
+    public double getSueldo() {
+        return sueldo;
+    }
+
+    public String getPIN() {
+        return PIN;
+    }
+
+    public ArrayList<Transaccion> getTransacciones() {
+        return transacciones;
+    }
+    
+    
 }
