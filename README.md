@@ -101,7 +101,6 @@ Universidad Nacional Mayor de San Marcos
 
 ## 📍 Futuras mejoras (opcional)
 
-- Refactorizar para seguir MVC completo.
 - Agregar pruebas unitarias.
 - Implementar base de datos local una vez permitida.
 - Mejorar la interfaz gráfica para mayor usabilidad.
