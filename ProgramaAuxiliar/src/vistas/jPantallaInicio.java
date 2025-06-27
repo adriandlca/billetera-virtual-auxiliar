@@ -82,13 +82,8 @@ public class jPantallaInicio extends javax.swing.JFrame {
 
     private void jbtnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIngresarActionPerformed
 
+        String PINGuardado;
         
-        try{
-            LeerArchivoUsuario usuario = new LeerArchivoUsuario();
-            usuario.leerArchivo();
-        }catch(LoadUserFileException e){
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
         
         try
         {
@@ -96,39 +91,44 @@ public class jPantallaInicio extends javax.swing.JFrame {
             LeerArchivoActivador archivo = new LeerArchivoActivador();
             archivo.leerArchivo();
             //LEE ARCHIVO DEL USUARIO
-            
-            
-            
+
             //DETECTA EL DATO OBTENIDO DEL PIN
             ControladorActivador controlActivador = new ControladorActivador();
-            try
-            {
-                if(controlActivador.validarActivacion(archivo.getCodigoActivador())){
-                    String PINIngresado = new String(jtxtPassword.getPassword()); //esta tachado porque getText() en password esta desfazado por temas de seguridad, pero funciona.
-                    ControladorLogin controlLogin = new ControladorLogin();
-                    try
-                    {
-                        if(controlLogin.validarPIN(PINIngresado))
+            try{
+            LeerArchivoUsuario usuario = new LeerArchivoUsuario();
+            usuario.leerArchivo();
+            PINGuardado = usuario.getPIN();
+                try
+                {
+                    if(controlActivador.validarActivacion(archivo.getCodigoActivador())){
+                        String PINIngresado = new String(jtxtPassword.getPassword()); //esta tachado porque getText() en password esta desfazado por temas de seguridad, pero funciona.
+                        ControladorLogin controlLogin = new ControladorLogin(); // crea el controlador para valida los datos del login (que sean de 4 digitos)
+                        try
                         {
-                            JPantallaAuxiliar PantallaAuxiliar = new JPantallaAuxiliar();
-                            PantallaAuxiliar.setVisible(true);
-                            this.dispose();
+                            if(controlLogin.validarPIN(PINGuardado,PINIngresado))
+                            {
+                                JPantallaAuxiliar PantallaAuxiliar = new JPantallaAuxiliar();
+                                PantallaAuxiliar.setVisible(true);
+                                this.dispose();
+                            }
+                            else
+                            {
+                                JOptionPane.showMessageDialog(this,"PIN Incorrecto");
+                            }
                         }
-                        else
+                        catch(InvalidPINException e)
                         {
-                            JOptionPane.showMessageDialog(this,"PIN Incorrecto");
+                            JOptionPane.showMessageDialog(this, e.getMessage());
                         }
-                    }
-                    catch(InvalidPINException e)
-                    {
-                        JOptionPane.showMessageDialog(this, e.getMessage());
                     }
                 }
-            }
-            catch(ActivationFileReadException e)
-            {
+                catch(ActivationFileReadException e)
+                {
+                    JOptionPane.showMessageDialog(this, e.getMessage());
+                }
+            }catch(LoadUserFileException e){
                 JOptionPane.showMessageDialog(this, e.getMessage());
-            }   
+            }
         }
         catch(LoadActivationFileException e)
         {

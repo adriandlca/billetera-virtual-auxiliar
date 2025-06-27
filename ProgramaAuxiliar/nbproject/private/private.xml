@@ -5,9 +5,12 @@
         <group>
             <file>file:/D:/UNMSM/ciclo%203/progra%202/LABOS/simulador-billetera-auxiliar/ProgramaAuxiliar/src/modelos/Usuario.java</file>
             <file>file:/D:/UNMSM/ciclo%203/progra%202/LABOS/simulador-billetera-auxiliar/ProgramaAuxiliar/src/vistas/JPantallaAuxiliar.java</file>
-            <file>file:/D:/UNMSM/ciclo%203/progra%202/LABOS/simulador-billetera-auxiliar/ProgramaAuxiliar/src/modelos/LeerArchivoUsuario.java</file>
-            <file>file:/D:/UNMSM/ciclo%203/progra%202/LABOS/simulador-billetera-auxiliar/ProgramaAuxiliar/src/vistas/jPantallaInicio.java</file>
-            <file>file:/D:/UNMSM/ciclo%203/progra%202/LABOS/simulador-billetera-auxiliar/ProgramaAuxiliar/src/modelos/EscribirArchivoTransacciones.java</file>
+            <file>file:/D:/UNMSM/ciclo%203/progra%202/LABOS/simulador-billetera-auxiliar/ProgramaAuxiliar/src/vistas/JPantallaPagarPorNumero.java</file>
+            <file>file:/D:/UNMSM/ciclo%203/progra%202/LABOS/simulador-billetera-auxiliar/ProgramaAuxiliar/src/vistas/JPantallaPagarPorTranferencia.java</file>
+            <file>file:/D:/UNMSM/ciclo%203/progra%202/LABOS/simulador-billetera-auxiliar/ProgramaAuxiliar/src/controladores/ControladorTablaUpdate.java</file>
+            <file>file:/D:/UNMSM/ciclo%203/progra%202/LABOS/simulador-billetera-auxiliar/ProgramaAuxiliar/src/controladores/ControladorActivador.java</file>
+            <file>file:/D:/UNMSM/ciclo%203/progra%202/LABOS/simulador-billetera-auxiliar/ProgramaAuxiliar/src/controladores/ControladorLogin.java</file>
+            <file>file:/D:/UNMSM/ciclo%203/progra%202/LABOS/simulador-billetera-auxiliar/ProgramaAuxiliar/src/modelos/LeerArchivoActivador.java</file>
         </group>
     </open-files>
 </project-private>

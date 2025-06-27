@@ -8,9 +8,8 @@ import excepciones.InvalidPINException;
 
 public class ControladorLogin {
     
-    private String PINGuardado = "1234";
     
-    public boolean validarPIN(String PINIngresado) throws InvalidPINException{
+    public boolean validarPIN(String PINGuardado, String PINIngresado) throws InvalidPINException{
         if(!isPinValid(PINIngresado)){
             throw new InvalidPINException("El PIN debe poseer 4 digitos:");
         }
