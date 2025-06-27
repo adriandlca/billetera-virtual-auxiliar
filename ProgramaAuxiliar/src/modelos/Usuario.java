@@ -4,6 +4,7 @@
  */
 package modelos;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import modelos.Transaccion;
 
@@ -24,7 +25,9 @@ public class Usuario {
     }
     
     public void registrarTransaccion(int numTelefoNroCuenta, double monto, String Descripcion, String tipoTransaccion){
-        Transaccion tra = new Transaccion(numTelefoNroCuenta,monto,Descripcion,tipoTransaccion);
+        LocalDateTime fechahora = LocalDateTime.now();
+        String tiempoAhora = String.valueOf(fechahora);
+        Transaccion tra = new Transaccion(numTelefoNroCuenta,tiempoAhora,monto,Descripcion,tipoTransaccion);
         transacciones.add(tra);
     }
 

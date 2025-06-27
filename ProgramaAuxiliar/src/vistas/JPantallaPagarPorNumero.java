@@ -4,26 +4,29 @@
  */
 package vistas;
 
+import controladores.ControladorTablaUpdate;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.table.DefaultTableModel;
 import modelos.EscribirArchivoTransacciones;
 import modelos.Usuario;
 
-/**
- *
- * @author HP SUPPORT
- */
+
 public class JPantallaPagarPorNumero extends javax.swing.JFrame {
 
     JPantallaAuxiliar pantallaPrincipal;
+    DefaultTableModel ModeloTabla;
+    int contador;
     
     public JPantallaPagarPorNumero(){
         initComponents();
     }
     
-    public JPantallaPagarPorNumero(JPantallaAuxiliar pantallaPrincipal) {
+    public JPantallaPagarPorNumero(JPantallaAuxiliar pantallaPrincipal, DefaultTableModel ModeloTabla, int contador) {
         initComponents();
         this.pantallaPrincipal =  pantallaPrincipal; // trae la pantalla
+        this.ModeloTabla = ModeloTabla;
+        this.contador = contador;
         setLocationRelativeTo(null);
         setDefaultCloseOperation(this.DO_NOTHING_ON_CLOSE);//inhabilita el boton cerrar de la barra de titulo
         //Esto usa librerias de windows event, para reescribir el funcionamineto del botón cerrar
@@ -160,14 +163,18 @@ public class JPantallaPagarPorNumero extends javax.swing.JFrame {
         pantallaPrincipal.getTextFieldSaldo().setText(String.valueOf(usuario.getSaldo()));//Traspasa los valor de archivo
         //registrar transaccion
         usuario.registrarTransaccion(numTelef, monto, descripcion, "telefono");
+        //Actualizar en tabla
+        int index = usuario.getTransacciones().size()-1;
+        System.out.println(index);
+        ControladorTablaUpdate tablaUpdate = new ControladorTablaUpdate();
+        tablaUpdate.ActualizarTabla(ModeloTabla, usuario.getTransacciones().get(index), contador);
         this.dispose();
     }//GEN-LAST:event_jbtnPagarActionPerformed
     
+    public int ActulizarContador(){
+        return this.contador+1;
+    }
     
-    
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

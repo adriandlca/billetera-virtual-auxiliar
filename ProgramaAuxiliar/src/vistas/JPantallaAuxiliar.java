@@ -7,21 +7,14 @@ import javax.swing.table.DefaultTableModel;
 import modelos.LeerArchivoUsuario;
 import modelos.Usuario;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 
-/**
- *
- * @author HP SUPPORT
- */
 public class JPantallaAuxiliar extends javax.swing.JFrame {
     
     DefaultTableModel ModeloTabla;
     String[] cabecera = {"N°","Numero/Transacción","Fecha","Descripcion","Cantidad"};
     String[][] data={};
     private Usuario user;
+    int contador = 0;
     JPantallaAuxiliar pantallaPrincipal;
     
     //ESTE CONTRUCTOR ES PARA EVITAR ERRORES
@@ -44,6 +37,7 @@ public class JPantallaAuxiliar extends javax.swing.JFrame {
         }catch(LoadUserFileException e){
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
+        //leer las transacciones 
     }
     
     public Usuario getUsuario(){
@@ -207,12 +201,13 @@ public class JPantallaAuxiliar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnPagarPorNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPagarPorNumeroActionPerformed
-        JPantallaPagarPorNumero PantallaPagarPorNumero = new JPantallaPagarPorNumero(this);
+        JPantallaPagarPorNumero PantallaPagarPorNumero = new JPantallaPagarPorNumero(this, ModeloTabla, contador);
+        contador = PantallaPagarPorNumero.ActulizarContador();
         PantallaPagarPorNumero.setVisible(true);
     }//GEN-LAST:event_jbtnPagarPorNumeroActionPerformed
 
     private void jbtnPagarPorTransaccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPagarPorTransaccionActionPerformed
-        JPantallaPagarPorTranferencia PantallaPagarPorTransaccion = new JPantallaPagarPorTranferencia(this);
+        JPantallaPagarPorTranferencia PantallaPagarPorTransaccion = new JPantallaPagarPorTranferencia(this, ModeloTabla, contador);
         PantallaPagarPorTransaccion.setVisible(true);
     }//GEN-LAST:event_jbtnPagarPorTransaccionActionPerformed
 

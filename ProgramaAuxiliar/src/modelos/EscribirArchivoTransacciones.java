@@ -10,11 +10,11 @@ import javax.swing.JOptionPane;
 
 public class EscribirArchivoTransacciones {
     
-    public void EscribirArchivo(int numTelefoNroCuenta, double monto, String Descripcion, String tipoTransaccion){
+    public void EscribirArchivo(int numTelefoNroCuenta,String fecha, double monto, String Descripcion, String tipoTransaccion){
         try{
             FileWriter fw = new FileWriter("Transacciones.txt",true);
             PrintWriter pw = new PrintWriter(fw);
-            pw.println(numTelefoNroCuenta+","+monto+","+Descripcion+","+tipoTransaccion);
+            pw.println(numTelefoNroCuenta+","+fecha+","+monto+","+Descripcion+","+tipoTransaccion);
             pw.close();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error en la lectura dle archivo...");

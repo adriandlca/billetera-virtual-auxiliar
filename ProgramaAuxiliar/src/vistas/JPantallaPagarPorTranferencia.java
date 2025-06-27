@@ -4,8 +4,10 @@
  */
 package vistas;
 
+import controladores.ControladorTablaUpdate;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.table.DefaultTableModel;
 import modelos.EscribirArchivoTransacciones;
 import modelos.Usuario;
 
@@ -16,14 +18,18 @@ import modelos.Usuario;
 public class JPantallaPagarPorTranferencia extends javax.swing.JFrame {
 
     JPantallaAuxiliar pantallaPrincipal;
+    DefaultTableModel ModeloTabla;
+    int contador;
     
     public JPantallaPagarPorTranferencia(){
         initComponents();
     }
     
-    public JPantallaPagarPorTranferencia(JPantallaAuxiliar pantallaPrincipal) {
+    public JPantallaPagarPorTranferencia(JPantallaAuxiliar pantallaPrincipal, DefaultTableModel ModeloTabla, int contador) {
         initComponents();
-        this.pantallaPrincipal =  pantallaPrincipal;
+        this.pantallaPrincipal =  pantallaPrincipal; // trae la pantalla
+        this.ModeloTabla = ModeloTabla;
+        this.contador = contador;
         setLocationRelativeTo(null);
         setDefaultCloseOperation(this.DO_NOTHING_ON_CLOSE);//inhabilita el boton cerrar de la barra de titulo
         //Esto usa librerias de windows event, para reescribir el funcionamineto del botón cerrar
@@ -161,12 +167,20 @@ public class JPantallaPagarPorTranferencia extends javax.swing.JFrame {
         
         //registrar transaccion
         usuario.registrarTransaccion(numCuenta, monto, descripcion, "transferencia");
-        
+        //Actualizar en tabla
+        int index = usuario.getTransacciones().size()-1;
+        System.out.println(index);
+        ControladorTablaUpdate tablaUpdate = new ControladorTablaUpdate();
+        tablaUpdate.ActualizarTabla(ModeloTabla, usuario.getTransacciones().get(index), contador);
         //EscribirArchivoTransacciones archivo = new EscribirArchivoTransacciones();
         //archivo.EscribirArchivo(numTelef, monto, descripcion, "Telefono");//prueba de escritura  
         this.dispose();
     }//GEN-LAST:event_jbtnPagarActionPerformed
 
+    public int ActulizarContador(){
+        return this.contador+1;
+    }
+    
     /**
      * @param args the command line arguments
      */
