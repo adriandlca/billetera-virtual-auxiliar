@@ -2,6 +2,7 @@ package vistas;
 
 import excepciones.LoadUserFileException;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import modelos.LeerArchivoUsuario;
 import modelos.Usuario;
@@ -20,22 +21,37 @@ public class JPantallaAuxiliar extends javax.swing.JFrame {
     DefaultTableModel ModeloTabla;
     String[] cabecera = {"N°","Numero/Transacción","Fecha","Descripcion","Cantidad"};
     String[][] data={};
+    private Usuario user;
+    JPantallaAuxiliar pantallaPrincipal;
+    
+    //ESTE CONTRUCTOR ES PARA EVITAR ERRORES
+    
     public JPantallaAuxiliar() {
         initComponents();
         setLocationRelativeTo(null);
         //carga la tabla
         ModeloTabla =  new DefaultTableModel(data,cabecera);
         jtblTransacciones.setModel(ModeloTabla);
+        //Leer datos del archivo del usuario
         try{
             LeerArchivoUsuario datosUsuario = new LeerArchivoUsuario();
             datosUsuario.leerArchivo();
-            Usuario user = new Usuario(datosUsuario.getNombre(),datosUsuario.getNumeroTelef(),datosUsuario.getSueldo(),datosUsuario.getPIN()); //String nombre, int numeroTelef, double sueldo, String PIN
+            user = new Usuario(datosUsuario.getNombre(),datosUsuario.getNumeroTelef(),datosUsuario.getSueldo(),datosUsuario.getPIN()); 
+            //String nombre, int numeroTelef, double sueldo, String PIN
             jtxtNombre.setText(user.getNombre());
             jtxtNumero.setText(String.valueOf(user.getNumeroTelef()));
-            jtxtSaldo.setText(String.valueOf(user.getSueldo()));
+            jtxtSaldo.setText(String.valueOf(user.getSaldo()));
         }catch(LoadUserFileException e){
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
+    }
+    
+    public Usuario getUsuario(){
+        return user;
+    }
+    
+    public JTextField getTextFieldSaldo(){
+        return jtxtSaldo;
     }
 
     @SuppressWarnings("unchecked")
@@ -191,12 +207,12 @@ public class JPantallaAuxiliar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnPagarPorNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPagarPorNumeroActionPerformed
-        JPantallaPagarPorNumero PantallaPagarPorNumero = new JPantallaPagarPorNumero();
+        JPantallaPagarPorNumero PantallaPagarPorNumero = new JPantallaPagarPorNumero(this);
         PantallaPagarPorNumero.setVisible(true);
     }//GEN-LAST:event_jbtnPagarPorNumeroActionPerformed
 
     private void jbtnPagarPorTransaccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPagarPorTransaccionActionPerformed
-        JPantallaPagarPorTransaccion PantallaPagarPorTransaccion = new JPantallaPagarPorTransaccion();
+        JPantallaPagarPorTranferencia PantallaPagarPorTransaccion = new JPantallaPagarPorTranferencia(this);
         PantallaPagarPorTransaccion.setVisible(true);
     }//GEN-LAST:event_jbtnPagarPorTransaccionActionPerformed
 

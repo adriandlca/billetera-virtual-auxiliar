@@ -7,6 +7,7 @@ package vistas;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import modelos.EscribirArchivoTransacciones;
+import modelos.Usuario;
 
 /**
  *
@@ -14,11 +15,15 @@ import modelos.EscribirArchivoTransacciones;
  */
 public class JPantallaPagarPorNumero extends javax.swing.JFrame {
 
-    /**
-     * Creates new form JPantallaPagarPorNumero
-     */
-    public JPantallaPagarPorNumero() {
+    JPantallaAuxiliar pantallaPrincipal;
+    
+    public JPantallaPagarPorNumero(){
         initComponents();
+    }
+    
+    public JPantallaPagarPorNumero(JPantallaAuxiliar pantallaPrincipal) {
+        initComponents();
+        this.pantallaPrincipal =  pantallaPrincipal; // trae la pantalla
         setLocationRelativeTo(null);
         setDefaultCloseOperation(this.DO_NOTHING_ON_CLOSE);//inhabilita el boton cerrar de la barra de titulo
         //Esto usa librerias de windows event, para reescribir el funcionamineto del botón cerrar
@@ -143,14 +148,23 @@ public class JPantallaPagarPorNumero extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnCancelarActionPerformed
 
     private void jbtnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPagarActionPerformed
+        //guardar datos ingresados de los textField
         int numTelef = Integer.parseInt(jtxtNumero.getText());
         double monto = Double.parseDouble(jtxtMonto.getText());
         String descripcion = jtxtDescripcion.getText();
-
-        EscribirArchivoTransacciones archivo = new EscribirArchivoTransacciones();
-        archivo.EscribirArchivo(numTelef, monto, descripcion, "Telefono");//prueba de escritura                              
+        
+        //Obtener el usuario de la pantalla Axuliar
+        Usuario usuario = pantallaPrincipal.getUsuario();
+        //setear el valor del nuevo sueldo
+        usuario.setSaldo(usuario.getSaldo() - monto);
+        pantallaPrincipal.getTextFieldSaldo().setText(String.valueOf(usuario.getSaldo()));//Traspasa los valor de archivo
+        //registrar transaccion
+        usuario.registrarTransaccion(numTelef, monto, descripcion, "telefono");
+        this.dispose();
     }//GEN-LAST:event_jbtnPagarActionPerformed
-
+    
+    
+    
     /**
      * @param args the command line arguments
      */

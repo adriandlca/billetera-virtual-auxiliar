@@ -11,7 +11,7 @@ import modelos.Transaccion;
 public class Usuario {
     private String nombre;
     private int numeroTelef;
-    private double sueldo;
+    private double saldo;
     private String PIN;
     private ArrayList<Transaccion> transacciones;
     
@@ -19,35 +19,56 @@ public class Usuario {
         transacciones = new ArrayList<Transaccion>();
         this.nombre = nombre;
         this.numeroTelef = numeroTelef;
-        this.sueldo = sueldo;
+        this.saldo = sueldo;
         this.PIN = PIN;
     }
     
-    public void registrarTransaccion(int numTelefoNroCuenta, int monto, String Descripcion, String tipoTransaccion){
+    public void registrarTransaccion(int numTelefoNroCuenta, double monto, String Descripcion, String tipoTransaccion){
         Transaccion tra = new Transaccion(numTelefoNroCuenta,monto,Descripcion,tipoTransaccion);
         transacciones.add(tra);
     }
-    
 
     public String getNombre() {
         return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public int getNumeroTelef() {
         return numeroTelef;
     }
 
-    public double getSueldo() {
-        return sueldo;
+    public void setNumeroTelef(int numeroTelef) {
+        this.numeroTelef = numeroTelef;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
     }
 
     public String getPIN() {
         return PIN;
     }
 
+    public void setPIN(String PIN) {
+        this.PIN = PIN;
+    }
+
     public ArrayList<Transaccion> getTransacciones() {
         return transacciones;
     }
+
+    public void setTransacciones(ArrayList<Transaccion> transacciones) {
+        this.transacciones = transacciones;
+    }
     
+    
+   
     
 }

@@ -6,16 +6,24 @@ package vistas;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import modelos.EscribirArchivoTransacciones;
+import modelos.Usuario;
 
 /**
  *
  * @author HP SUPPORT
  */
-public class JPantallaPagarPorTransaccion extends javax.swing.JFrame {
+public class JPantallaPagarPorTranferencia extends javax.swing.JFrame {
 
+    JPantallaAuxiliar pantallaPrincipal;
     
-    public JPantallaPagarPorTransaccion() {
+    public JPantallaPagarPorTranferencia(){
         initComponents();
+    }
+    
+    public JPantallaPagarPorTranferencia(JPantallaAuxiliar pantallaPrincipal) {
+        initComponents();
+        this.pantallaPrincipal =  pantallaPrincipal;
         setLocationRelativeTo(null);
         setDefaultCloseOperation(this.DO_NOTHING_ON_CLOSE);//inhabilita el boton cerrar de la barra de titulo
         //Esto usa librerias de windows event, para reescribir el funcionamineto del botón cerrar
@@ -36,19 +44,24 @@ public class JPantallaPagarPorTransaccion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField2 = new javax.swing.JTextField();
+        jtxtMonto = new javax.swing.JTextField();
         jbtnPagar = new javax.swing.JButton();
         jbtnCancelar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jtxtNroCuenta = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jtxtDescripcion = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jbtnPagar.setText("Pagar");
+        jbtnPagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnPagarActionPerformed(evt);
+            }
+        });
 
         jbtnCancelar.setText("Cancelar");
         jbtnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -59,9 +72,9 @@ public class JPantallaPagarPorTransaccion extends javax.swing.JFrame {
 
         jLabel1.setText("Ingresar Num Cuenta.");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jtxtNroCuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jtxtNroCuentaActionPerformed(evt);
             }
         });
 
@@ -96,9 +109,9 @@ public class JPantallaPagarPorTransaccion extends javax.swing.JFrame {
                         .addComponent(jbtnPagar, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(jtxtNroCuenta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                    .addComponent(jtxtMonto, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jtxtDescripcion, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -109,15 +122,15 @@ public class JPantallaPagarPorTransaccion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtxtNroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxtMonto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtxtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtnPagar)
@@ -132,9 +145,27 @@ public class JPantallaPagarPorTransaccion extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jbtnCancelarActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jtxtNroCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtNroCuentaActionPerformed
 
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jtxtNroCuentaActionPerformed
+
+    private void jbtnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPagarActionPerformed
+        int numCuenta = Integer.parseInt(jtxtNroCuenta.getText());
+        double monto = Double.parseDouble(jtxtMonto.getText());
+        String descripcion = jtxtDescripcion.getText();
+        
+        Usuario usuario = pantallaPrincipal.getUsuario();
+        //setear el valor del nuevo sueldo
+        usuario.setSaldo(usuario.getSaldo() - monto);
+        pantallaPrincipal.getTextFieldSaldo().setText(String.valueOf(usuario.getSaldo()));//Traspasa los valor de archivo     
+        
+        //registrar transaccion
+        usuario.registrarTransaccion(numCuenta, monto, descripcion, "transferencia");
+        
+        //EscribirArchivoTransacciones archivo = new EscribirArchivoTransacciones();
+        //archivo.EscribirArchivo(numTelef, monto, descripcion, "Telefono");//prueba de escritura  
+        this.dispose();
+    }//GEN-LAST:event_jbtnPagarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,20 +184,21 @@ public class JPantallaPagarPorTransaccion extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JPantallaPagarPorTransaccion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JPantallaPagarPorTranferencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JPantallaPagarPorTransaccion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JPantallaPagarPorTranferencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JPantallaPagarPorTransaccion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JPantallaPagarPorTranferencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JPantallaPagarPorTransaccion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JPantallaPagarPorTranferencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JPantallaPagarPorTransaccion().setVisible(true);
+                new JPantallaPagarPorTranferencia().setVisible(true);
             }
         });
     }
@@ -176,10 +208,10 @@ public class JPantallaPagarPorTransaccion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JButton jbtnCancelar;
     private javax.swing.JButton jbtnPagar;
+    private javax.swing.JTextField jtxtDescripcion;
+    private javax.swing.JTextField jtxtMonto;
+    private javax.swing.JTextField jtxtNroCuenta;
     // End of variables declaration//GEN-END:variables
 }
