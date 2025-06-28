@@ -6,15 +6,21 @@ package modelos;
 
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class EscribirArchivoTransacciones {
+    private ArrayList<Transaccion> transacciones;
     
-    public void EscribirArchivo(int numTelefoNroCuenta,String fecha, double monto, String Descripcion, String tipoTransaccion){
+    public void EscribirArchivo(ArrayList<Transaccion> transacciones){
         try{
-            FileWriter fw = new FileWriter("Transacciones.txt",true);
+            this.transacciones = transacciones;
+            FileWriter fw = new FileWriter("Transacciones.txt");
             PrintWriter pw = new PrintWriter(fw);
-            pw.println(numTelefoNroCuenta+","+fecha+","+monto+","+Descripcion+","+tipoTransaccion);
+            for(int i = 0; i<this.transacciones.size();i++){
+                Transaccion transaccion = this.transacciones.get(i);
+                pw.println(transaccion.getNumTelefoNroCuenta()+","+transaccion.getFecha()+","+transaccion.getMonto()+","+transaccion.getDescripcion()+","+transaccion.getTipoTransaccion());
+            }
             pw.close();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error en la lectura dle archivo...");

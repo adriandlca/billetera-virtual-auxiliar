@@ -1,9 +1,12 @@
 package vistas;
 
 import excepciones.LoadUserFileException;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import modelos.EscribirArchivoTransacciones;
 import modelos.LeerArchivoUsuario;
 import modelos.Usuario;
 
@@ -15,7 +18,6 @@ public class JPantallaAuxiliar extends javax.swing.JFrame {
     String[][] data={};
     private Usuario user;
     int contador = 0;
-    JPantallaAuxiliar pantallaPrincipal;
     
     //ESTE CONTRUCTOR ES PARA EVITAR ERRORES
     
@@ -37,8 +39,24 @@ public class JPantallaAuxiliar extends javax.swing.JFrame {
         }catch(LoadUserFileException e){
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
+        
+        setDefaultCloseOperation(this.DO_NOTHING_ON_CLOSE);
+       addWindowListener(new WindowAdapter(){
+           @Override
+           public void windowClosing(WindowEvent e){
+               int opcion = JOptionPane.showConfirmDialog( JPantallaAuxiliar.this ,"¿Estas seguro/a que quieres salir?", "Confirmar salida",JOptionPane.YES_NO_OPTION);
+               if(opcion == JOptionPane.YES_OPTION){
+                   EscribirArchivoTransacciones archivoTransacciones = new EscribirArchivoTransacciones();
+                   archivoTransacciones.EscribirArchivo(user.getTransacciones());
+                   System.exit(0);
+               }
+           }
+       });
+       setVisible(true);
         //leer las transacciones 
     }
+    
+    
     
     public Usuario getUsuario(){
         return user;
