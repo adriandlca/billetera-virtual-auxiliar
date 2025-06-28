@@ -7,6 +7,7 @@ package vistas;
 import controladores.ControladorTablaUpdate;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.time.LocalDateTime;
 import javax.swing.table.DefaultTableModel;
 import modelos.EscribirArchivoTransacciones;
 import modelos.Usuario;
@@ -166,7 +167,9 @@ public class JPantallaPagarPorTranferencia extends javax.swing.JFrame {
         pantallaPrincipal.getTextFieldSaldo().setText(String.valueOf(usuario.getSaldo()));//Traspasa los valor de archivo     
         
         //registrar transaccion
-        usuario.registrarTransaccion(numCuenta, monto, descripcion, "transferencia");
+        LocalDateTime fechahora = LocalDateTime.now();
+        String fecha = String.valueOf(fechahora);
+        usuario.registrarTransaccion(numCuenta, fecha, monto, descripcion, "transferencia");
         //Actualizar en tabla
         int index = usuario.getTransacciones().size()-1;
         System.out.println(index);

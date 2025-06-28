@@ -1,5 +1,7 @@
 package vistas;
 
+import controladores.ControladorTablaUpdate;
+import excepciones.LoadActivationFileException;
 import excepciones.LoadUserFileException;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -7,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import modelos.EscribirArchivoTransacciones;
+import modelos.LeerArchivoTransacciones;
 import modelos.LeerArchivoUsuario;
 import modelos.Usuario;
 
@@ -27,6 +30,8 @@ public class JPantallaAuxiliar extends javax.swing.JFrame {
         //carga la tabla
         ModeloTabla =  new DefaultTableModel(data,cabecera);
         jtblTransacciones.setModel(ModeloTabla);
+        
+        
         //Leer datos del archivo del usuario
         try{
             LeerArchivoUsuario datosUsuario = new LeerArchivoUsuario();
@@ -40,7 +45,23 @@ public class JPantallaAuxiliar extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
         
-        setDefaultCloseOperation(this.DO_NOTHING_ON_CLOSE);
+        //LEER ARCHIVO TRANSACCIONES
+        try{
+            LeerArchivoTransacciones ArchivoTransacciones = new LeerArchivoTransacciones();
+            ArchivoTransacciones.leerArchivo(user);
+        }catch(Exception e){
+             JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+        
+        //CARGA LOS DATOS DEL ARCHIVO TRANSACCIONES QUE SE CREÓ AL CERRAR EL PROGRAMA
+        ControladorTablaUpdate tablaTransacciones = new ControladorTablaUpdate();
+        for(int i=0;i<user.getTransacciones().size();i++){
+            tablaTransacciones.ActualizarTabla(ModeloTabla, user.getTransacciones().get(i), contador);
+        }
+
+       //GENERA LA CONFIRMACIÓN SI DESEA CERRAR EL PROGRAMA, CASO SEA SI, ENTONCES SE IMPRIMIRÁ TODOS LOS ELEMENTOS DEL ARRAYLIST TRANSACCIONES A UN ARCHIVO LLAMADO "TRANSACCIONES";
+       //MODIFICANDO EL COMPORTAMIENTO DEL BOTÓN CERRAR DE LA BARRA DE TÍTULO
+       setDefaultCloseOperation(this.DO_NOTHING_ON_CLOSE);
        addWindowListener(new WindowAdapter(){
            @Override
            public void windowClosing(WindowEvent e){
@@ -53,9 +74,9 @@ public class JPantallaAuxiliar extends javax.swing.JFrame {
            }
        });
        setVisible(true);
-        //leer las transacciones 
+       //FIN DE LA CONFIRMACIÓN
+       
     }
-    
     
     
     public Usuario getUsuario(){

@@ -3,8 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/UNMSM/ciclo%203/progra%202/LABOS/simulador-billetera-auxiliar/ProgramaAuxiliar/src/controladores/ControladorTablaUpdate.java</file>
+            <file>file:/D:/UNMSM/ciclo%203/progra%202/LABOS/simulador-billetera-auxiliar/ProgramaAuxiliar/src/modelos/LeerArchivoTransacciones.java</file>
+            <file>file:/D:/UNMSM/ciclo%203/progra%202/LABOS/simulador-billetera-auxiliar/ProgramaAuxiliar/src/modelos/Transaccion.java</file>
+            <file>file:/D:/UNMSM/ciclo%203/progra%202/LABOS/simulador-billetera-auxiliar/ProgramaAuxiliar/src/modelos/Usuario.java</file>
+            <file>file:/D:/UNMSM/ciclo%203/progra%202/LABOS/simulador-billetera-auxiliar/ProgramaAuxiliar/src/vistas/JPantallaAuxiliar.java</file>
             <file>file:/D:/UNMSM/ciclo%203/progra%202/LABOS/simulador-billetera-auxiliar/ProgramaAuxiliar/src/vistas/JPantallaPagarPorNumero.java</file>
+            <file>file:/D:/UNMSM/ciclo%203/progra%202/LABOS/simulador-billetera-auxiliar/ProgramaAuxiliar/src/controladores/ControladorTablaUpdate.java</file>
+            <file>file:/D:/UNMSM/ciclo%203/progra%202/LABOS/simulador-billetera-auxiliar/ProgramaAuxiliar/src/vistas/jPantallaInicio.java</file>
         </group>
     </open-files>
 </project-private>

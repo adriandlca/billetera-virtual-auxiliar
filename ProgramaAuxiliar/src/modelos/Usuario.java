@@ -24,9 +24,7 @@ public class Usuario {
         this.PIN = PIN;
     }
     
-    public void registrarTransaccion(int numTelefoNroCuenta, double monto, String Descripcion, String tipoTransaccion){
-        LocalDateTime fechahora = LocalDateTime.now();
-        String tiempoAhora = String.valueOf(fechahora);
+    public void registrarTransaccion(int numTelefoNroCuenta,String tiempoAhora ,double monto, String Descripcion, String tipoTransaccion){
         Transaccion tra = new Transaccion(numTelefoNroCuenta,tiempoAhora,monto,Descripcion,tipoTransaccion);
         transacciones.add(tra);
     }

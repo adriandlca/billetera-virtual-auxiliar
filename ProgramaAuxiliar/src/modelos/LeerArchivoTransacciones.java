@@ -10,18 +10,26 @@ import java.util.StringTokenizer;
 
 public class LeerArchivoTransacciones {
     private int NroTrasaccionOTelef;
+    private String fecha;
     private double monto;
     private String descripcion;
+    private String tipoTransaccion;
     
-    public void leerArchivo() throws LoadActivationFileException{
+    public void leerArchivo(Usuario user) throws LoadActivationFileException{
         try{
            String linea;
            FileReader fr =new FileReader("Transacciones.txt");
            BufferedReader br = new BufferedReader(fr);
            while((linea=br.readLine())!=null){
-               StringTokenizer st = new StringTokenizer(linea);
-               
+               StringTokenizer st = new StringTokenizer(linea,",");
+               NroTrasaccionOTelef = Integer.parseInt(st.nextToken());
+               fecha = st.nextToken();
+               monto = Double.parseDouble(st.nextToken());
+               descripcion = st.nextToken();
+               tipoTransaccion = st.nextToken();
+               user.registrarTransaccion(NroTrasaccionOTelef, fecha, monto, descripcion, tipoTransaccion);
            }
+           
         }catch(IOException e){
             throw new LoadActivationFileException("El archivo no fue cargado de forma correcta");
         }
