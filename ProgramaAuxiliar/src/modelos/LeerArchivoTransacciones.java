@@ -25,7 +25,7 @@ public class LeerArchivoTransacciones {
                NroTrasaccionOTelef = Integer.parseInt(st.nextToken());
                fecha = st.nextToken();
                monto = Double.parseDouble(st.nextToken());
-               descripcion = st.nextToken();
+               descripcion = st.nextToken().trim();
                tipoTransaccion = st.nextToken();
                user.registrarTransaccion(NroTrasaccionOTelef, fecha, monto, descripcion, tipoTransaccion);
            }

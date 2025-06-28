@@ -56,7 +56,8 @@ public class JPantallaAuxiliar extends javax.swing.JFrame {
         //CARGA LOS DATOS DEL ARCHIVO TRANSACCIONES QUE SE CREÓ AL CERRAR EL PROGRAMA
         ControladorTablaUpdate tablaTransacciones = new ControladorTablaUpdate();
         for(int i=0;i<user.getTransacciones().size();i++){
-            tablaTransacciones.ActualizarTabla(ModeloTabla, user.getTransacciones().get(i), contador);
+            tablaTransacciones.ActualizarTabla(ModeloTabla, user.getTransacciones().get(i), i);
+            contador = i+1;
         }
 
        //GENERA LA CONFIRMACIÓN SI DESEA CERRAR EL PROGRAMA, CASO SEA SI, ENTONCES SE IMPRIMIRÁ TODOS LOS ELEMENTOS DEL ARRAYLIST TRANSACCIONES A UN ARCHIVO LLAMADO "TRANSACCIONES";

@@ -172,7 +172,6 @@ public class JPantallaPagarPorTranferencia extends javax.swing.JFrame {
         usuario.registrarTransaccion(numCuenta, fecha, monto, descripcion, "transferencia");
         //Actualizar en tabla
         int index = usuario.getTransacciones().size()-1;
-        System.out.println(index);
         ControladorTablaUpdate tablaUpdate = new ControladorTablaUpdate();
         tablaUpdate.ActualizarTabla(ModeloTabla, usuario.getTransacciones().get(index), contador);
         //EscribirArchivoTransacciones archivo = new EscribirArchivoTransacciones();
