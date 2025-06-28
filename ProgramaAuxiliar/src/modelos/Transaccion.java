@@ -12,7 +12,7 @@ public class Transaccion {
     public Transaccion(int numTelefoNroCuenta, String fecha, double monto, String Descripcion, String tipoTransaccion) {
         this.numTelefoNroCuenta = numTelefoNroCuenta;
         this.fecha = fecha;
-        this.monto = -monto;
+        this.monto = monto;
         this.Descripcion = Descripcion;
         this.tipoTransaccion = tipoTransaccion;
     }

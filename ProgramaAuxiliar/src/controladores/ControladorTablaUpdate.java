@@ -13,7 +13,7 @@ public class ControladorTablaUpdate {
     public void ActualizarTabla(DefaultTableModel modeloTabla ,Transaccion transaccion, int contador){
             contador++;
             DecimalFormat df2 = new DecimalFormat("####.00");
-            String monto = df2.format(transaccion.getMonto());
+            String monto = df2.format(-transaccion.getMonto());
             Object[] fila = {contador, transaccion.getNumTelefoNroCuenta(), transaccion.getFecha(), transaccion.getDescripcion(), monto};
             modeloTabla.addRow(fila);
     }
