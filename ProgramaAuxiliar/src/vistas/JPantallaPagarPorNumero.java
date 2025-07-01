@@ -161,7 +161,7 @@ public class JPantallaPagarPorNumero extends javax.swing.JFrame {
         Usuario usuario = pantallaPrincipal.getUsuario();
         //setear el valor del nuevo sueldo
         usuario.setSaldo(usuario.getSaldo() - monto);
-        pantallaPrincipal.getTextFieldSaldo().setText(String.valueOf(usuario.getSaldo()));//Traspasa los valor de archivo
+        pantallaPrincipal.getTextFieldSaldo().setText("S/."+String.valueOf(usuario.getSaldo()));//Traspasa los valor de archivo
         //registrar transaccion
         LocalDateTime fechahora = LocalDateTime.now();
         String fecha = String.valueOf(fechahora);
