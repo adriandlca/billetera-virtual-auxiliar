@@ -5,6 +5,7 @@
 package vistas;
 
 import controladores.ControladorTablaUpdate;
+import controladores.ControladorVaciarTabla;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.time.LocalDateTime;
@@ -159,9 +160,9 @@ public class JPantallaPagarPorNumero extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(76, Short.MAX_VALUE)
+                .addContainerGap(70, Short.MAX_VALUE)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
                 .addGap(22, 22, 22)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -240,8 +241,9 @@ public class JPantallaPagarPorNumero extends javax.swing.JFrame {
         //Actualizar en tabla
         int index = usuario.getTransacciones().size()-1;
         System.out.println(index);
-        ControladorTablaUpdate tablaUpdate = new ControladorTablaUpdate();
-        tablaUpdate.ActualizarTabla(ModeloTabla, usuario.getTransacciones().get(index), contador);
+        ControladorVaciarTabla vaciarTabla = new ControladorVaciarTabla(ModeloTabla, pantallaPrincipal.getJTabla());
+        ControladorTablaUpdate tablaUpdate = new ControladorTablaUpdate(ModeloTabla, pantallaPrincipal.getUsuario().getTransacciones());
+        tablaUpdate.ActualizarTabla();
         this.dispose();
     }//GEN-LAST:event_jbtnPagarActionPerformed
     

@@ -69,7 +69,7 @@ public class Usuario {
         this.transacciones = transacciones;
     }
     
-    
-   
-    
+    public void reemplazar(int i, Transaccion t){
+        this.transacciones.set(i, t);
+    }  
 }
