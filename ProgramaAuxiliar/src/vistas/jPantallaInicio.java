@@ -11,15 +11,6 @@ import javax.swing.JOptionPane;
 import modelos.LeerArchivoActivador;
 import modelos.LeerArchivoUsuario;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author HP SUPPORT
- */
 public class jPantallaInicio extends javax.swing.JFrame {
     //private String codigoActivador;
     public jPantallaInicio() {
@@ -118,8 +109,6 @@ public class jPantallaInicio extends javax.swing.JFrame {
     private void jbtnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIngresarActionPerformed
 
         String PINGuardado;
-        
-        
         try
         {
             //LEE EL ARCHIVO ACTIVADOR

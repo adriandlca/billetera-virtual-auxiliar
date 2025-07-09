@@ -68,8 +68,5 @@ public class Usuario {
     public void setTransacciones(ArrayList<Transaccion> transacciones) {
         this.transacciones = transacciones;
     }
-    
-    public void reemplazar(int i, Transaccion t){
-        this.transacciones.set(i, t);
-    }  
+     
 }

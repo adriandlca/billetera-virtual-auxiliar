@@ -274,7 +274,7 @@ public class JPantallaAuxiliar extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(236, 239, 241));
 
         jcbxFiltro.setBackground(new java.awt.Color(63, 142, 252));
-        jcbxFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "Mas recientes al Más antiguo", "Mayor a menor transaccion", "Menor a Mayor Transaccion", "A-Z", "Z-A" }));
+        jcbxFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "Mas recientes al Más antiguo", "Mayor a menor Monto", "Menor a Mayor Monto", "Transaferencia", "Numero telefonico" }));
         jcbxFiltro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbxFiltroActionPerformed(evt);
@@ -382,11 +382,27 @@ public class JPantallaAuxiliar extends javax.swing.JFrame {
     }//GEN-LAST:event_jtxtNombreActionPerformed
 
     private void jcbxFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbxFiltroActionPerformed
-        /*ControladorFiltro filtro = new ControladorFiltro();
+        ControladorFiltro filtro = new ControladorFiltro( this  ,user.getTransacciones(),ModeloTabla);
         switch(jcbxFiltro.getSelectedIndex()){
             case 0:
-                
-        }*/
+                filtro.sinFiltro();
+                break;
+            case 1:
+                filtro.ordenarPorFechaReciente();
+                break;
+            case 2:
+                filtro.ordenarPorMontoDesc();
+                break;
+            case 3:
+                filtro.ordenarPorMontoAsc();
+                break;
+            case 4:
+                filtro.ordenarPorTransferencia();
+                break;
+            case 5:
+                filtro.ordenarPorNumeroTelefonico();
+                break;
+        }
     }//GEN-LAST:event_jcbxFiltroActionPerformed
 
     /**
