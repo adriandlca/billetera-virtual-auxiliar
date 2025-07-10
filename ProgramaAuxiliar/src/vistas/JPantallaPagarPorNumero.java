@@ -264,9 +264,7 @@ public class JPantallaPagarPorNumero extends javax.swing.JFrame {
             }
         }else{
             JOptionPane.showMessageDialog(null, "El número y el monto no deben de estar vacios", "Error del sistema",JOptionPane.ERROR_MESSAGE);
-        }
-        
-        
+        }   
     }//GEN-LAST:event_jbtnPagarActionPerformed
     
     public int ActulizarContador(){

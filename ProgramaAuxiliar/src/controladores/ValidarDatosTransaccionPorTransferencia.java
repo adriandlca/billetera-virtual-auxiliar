@@ -20,7 +20,7 @@ public class ValidarDatosTransaccionPorTransferencia {
     
     public boolean validarMonto(String monto, double saldo) throws InvalidValueMontoException{
         if(!monto.matches("\\d+")){
-            throw new InvalidValueMontoException("Ingrese un numero telefónico adecuado");
+            throw new InvalidValueMontoException("Ingrese un monto adecuado");
         }
         double montoDouble = Double.parseDouble(monto);         
         if(montoDouble>saldo){

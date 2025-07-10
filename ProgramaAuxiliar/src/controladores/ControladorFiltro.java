@@ -82,14 +82,14 @@ public class ControladorFiltro {
     }
     
     public void ordenarPorTransferencia(){
-        ArrayList ListaTelef = new ArrayList<>();
+        ArrayList ListaTranf = new ArrayList<>();
        for(Transaccion tr: listaCopia){
            if(tr.getTipoTransaccion().equalsIgnoreCase("transferencia")){
-               ListaTelef.add(tr);
+               ListaTranf.add(tr);
            }
        }   
        ControladorVaciarTabla vaciarTabla = new ControladorVaciarTabla(ModeloTabla, pantallaPrincipal.getJTabla());
-       ControladorTablaUpdate tablaUpdate = new ControladorTablaUpdate(ModeloTabla, ListaTelef);
+       ControladorTablaUpdate tablaUpdate = new ControladorTablaUpdate(ModeloTabla, ListaTranf);
        tablaUpdate.ActualizarTabla();
     }
   
