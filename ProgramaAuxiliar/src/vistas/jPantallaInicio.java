@@ -1,8 +1,8 @@
 package vistas;
 
 
-import controladores.ControladorActivador;
-import controladores.ControladorLogin;
+import controladores.ValidadorCodigoActivador;
+import controladores.ValidadorLogin;
 import excepciones.ActivationFileReadException;
 import excepciones.InvalidPINException;
 import excepciones.LoadActivationFileException;
@@ -114,19 +114,19 @@ public class jPantallaInicio extends javax.swing.JFrame {
             //LEE EL ARCHIVO ACTIVADOR
             LeerArchivoActivador archivo = new LeerArchivoActivador();
             archivo.leerArchivo();
-            //LEE ARCHIVO DEL USUARIO
 
             //DETECTA EL DATO OBTENIDO DEL PIN
-            ControladorActivador controlActivador = new ControladorActivador();
+            ValidadorCodigoActivador validarActivador = new ValidadorCodigoActivador();
             try{
-            LeerArchivoUsuario usuario = new LeerArchivoUsuario();
-            usuario.leerArchivo();
-            PINGuardado = usuario.getPIN();
+                //LEER ARCHIVO DEL USUARIO
+                LeerArchivoUsuario usuario = new LeerArchivoUsuario();
+                usuario.leerArchivo();
+                PINGuardado = usuario.getPIN();
                 try
                 {
-                    if(controlActivador.validarActivacion(archivo.getCodigoActivador())){
+                    if(validarActivador.validarActivacion(archivo.getCodigoActivador())){
                         String PINIngresado = new String(jtxtPassword.getPassword()); //esta tachado porque getText() en password esta desfazado por temas de seguridad, pero funciona.
-                        ControladorLogin controlLogin = new ControladorLogin(); // crea el controlador para valida los datos del login (que sean de 4 digitos)
+                        ValidadorLogin controlLogin = new ValidadorLogin(); // crea el controlador para valida los datos del login (que sean de 4 digitos)
                         try
                         {
                             if(controlLogin.validarPIN(PINGuardado,PINIngresado))
@@ -137,26 +137,26 @@ public class jPantallaInicio extends javax.swing.JFrame {
                             }
                             else
                             {
-                                JOptionPane.showMessageDialog(this,"PIN Incorrecto");
+                                JOptionPane.showMessageDialog(this,"PIN Incorrecto", "Error en la validacion", JOptionPane.WARNING_MESSAGE);
                             }
                         }
                         catch(InvalidPINException e)
                         {
-                            JOptionPane.showMessageDialog(this, e.getMessage());
+                            JOptionPane.showMessageDialog(this, e.getMessage(), "Error de validacion", JOptionPane.WARNING_MESSAGE);
                         }
                     }
                 }
                 catch(ActivationFileReadException e)
                 {
-                    JOptionPane.showMessageDialog(this, e.getMessage());
+                    JOptionPane.showMessageDialog(this, e.getMessage(), "Error de lectura", JOptionPane.ERROR_MESSAGE);
                 }
             }catch(LoadUserFileException e){
-                JOptionPane.showMessageDialog(this, e.getMessage());
+                JOptionPane.showMessageDialog(this, e.getMessage(),"Error de carga del archivo", JOptionPane.ERROR_MESSAGE);
             }
         }
         catch(LoadActivationFileException e)
         {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error de carga del archivo", JOptionPane.ERROR_MESSAGE);
         }
         
     }//GEN-LAST:event_jbtnIngresarActionPerformed

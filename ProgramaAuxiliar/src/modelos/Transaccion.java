@@ -3,13 +3,13 @@ package modelos;
 
 public class Transaccion {
     
-    private int numTelefoNroCuenta;
+    private String numTelefoNroCuenta;
     private String fecha;
     private double monto;
     private String Descripcion;
     private String tipoTransaccion;
 
-    public Transaccion(int numTelefoNroCuenta, String fecha, double monto, String Descripcion, String tipoTransaccion) {
+    public Transaccion(String numTelefoNroCuenta, String fecha, double monto, String Descripcion, String tipoTransaccion) {
         this.numTelefoNroCuenta = numTelefoNroCuenta;
         this.fecha = fecha;
         this.monto = monto;
@@ -17,11 +17,11 @@ public class Transaccion {
         this.tipoTransaccion = tipoTransaccion;
     }
 
-    public int getNumTelefoNroCuenta() {
+    public String getNumTelefoNroCuenta() {
         return numTelefoNroCuenta;
     }
 
-    public void setNumTelefoNroCuenta(int numTelefoNroCuenta) {
+    public void setNumTelefoNroCuenta(String numTelefoNroCuenta) {
         this.numTelefoNroCuenta = numTelefoNroCuenta;
     }
 

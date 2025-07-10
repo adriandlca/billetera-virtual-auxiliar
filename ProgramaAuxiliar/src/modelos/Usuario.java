@@ -1,10 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package modelos;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import modelos.Transaccion;
 
@@ -24,7 +20,7 @@ public class Usuario {
         this.PIN = PIN;
     }
     
-    public void registrarTransaccion(int numTelefoNroCuenta,String tiempoAhora ,double monto, String Descripcion, String tipoTransaccion){
+    public void registrarTransaccion(String numTelefoNroCuenta,String tiempoAhora ,double monto, String Descripcion, String tipoTransaccion){
         Transaccion tra = new Transaccion(numTelefoNroCuenta,tiempoAhora,monto,Descripcion,tipoTransaccion);
         transacciones.add(tra);
     }

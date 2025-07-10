@@ -6,7 +6,7 @@ package controladores;
 
 import excepciones.InvalidPINException;
 
-public class ControladorLogin {
+public class ValidadorLogin {
     
     
     public boolean validarPIN(String PINGuardado, String PINIngresado) throws InvalidPINException{

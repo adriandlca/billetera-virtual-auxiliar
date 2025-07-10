@@ -6,11 +6,14 @@ package vistas;
 
 import controladores.ControladorTablaUpdate;
 import controladores.ControladorVaciarTabla;
+import controladores.ValidadorDatosTransaccionPorNumero;
+import excepciones.InvalidNumberPhoneException;
+import excepciones.InvalidValueMontoException;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.time.LocalDateTime;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import modelos.EscribirArchivoTransacciones;
 import modelos.Usuario;
 
 
@@ -225,26 +228,44 @@ public class JPantallaPagarPorNumero extends javax.swing.JFrame {
 
     private void jbtnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPagarActionPerformed
         //guardar datos ingresados de los textField
-        int numTelef = Integer.parseInt(jtxtNumero.getText());
-        double monto = Double.parseDouble(jtxtMonto.getText());
+        String numTelef = jtxtNumero.getText();
+        String monto = jtxtMonto.getText();
         String descripcion = jtxtDescripcion.getText();
-        
         //Obtener el usuario de la pantalla Axuliar
         Usuario usuario = pantallaPrincipal.getUsuario();
-        //setear el valor del nuevo sueldo
-        usuario.setSaldo(usuario.getSaldo() - monto);
-        pantallaPrincipal.getTextFieldSaldo().setText("S/."+String.valueOf(usuario.getSaldo()));//Traspasa los valor de archivo
-        //registrar transaccion
-        LocalDateTime fechahora = LocalDateTime.now();
-        String fecha = String.valueOf(fechahora);
-        usuario.registrarTransaccion(numTelef,fecha , monto, descripcion, "telefono");
-        //Actualizar en tabla
-        int index = usuario.getTransacciones().size()-1;
-        System.out.println(index);
-        ControladorVaciarTabla vaciarTabla = new ControladorVaciarTabla(ModeloTabla, pantallaPrincipal.getJTabla());
-        ControladorTablaUpdate tablaUpdate = new ControladorTablaUpdate(ModeloTabla, pantallaPrincipal.getUsuario().getTransacciones());
-        tablaUpdate.ActualizarTabla();
-        this.dispose();
+        
+        ValidadorDatosTransaccionPorNumero validarDatos = new ValidadorDatosTransaccionPorNumero();
+        
+        if(!numTelef.isEmpty()&& !monto.isEmpty()){
+            try{
+                if(validarDatos.validaNumeroTelefonico(numTelef) && validarDatos.validarMonto(monto, usuario.getSaldo())){
+                    double montoValidado = Double.parseDouble(monto);
+                    
+                    //Setear el valor del nuevo sueldo
+                    usuario.setSaldo(usuario.getSaldo() - montoValidado);
+                    pantallaPrincipal.getTextFieldSaldo().setText("S/."+String.valueOf(usuario.getSaldo()));//Traspasa los valor de archivo
+                    
+                    //registrar transaccion
+                    LocalDateTime fechahora = LocalDateTime.now();
+                    String fecha = String.valueOf(fechahora);
+                    usuario.registrarTransaccion(numTelef,fecha , montoValidado, descripcion, "telefono");
+                    
+                    //Actualizar en tabla
+                    ControladorVaciarTabla vaciarTabla = new ControladorVaciarTabla(ModeloTabla, pantallaPrincipal.getJTabla());
+                    ControladorTablaUpdate tablaUpdate = new ControladorTablaUpdate(ModeloTabla, pantallaPrincipal.getUsuario().getTransacciones());
+                    tablaUpdate.ActualizarTabla();
+                    this.dispose();
+                }
+            }catch (InvalidNumberPhoneException e) {
+                JOptionPane.showMessageDialog(null, "Número telefónico inválido: " + e.getMessage(), "Dato Invalido", JOptionPane.WARNING_MESSAGE);
+            }catch (InvalidValueMontoException e) {
+                JOptionPane.showMessageDialog(null, "Monto inválido: " + e.getMessage(), "Dato Invalido", JOptionPane.WARNING_MESSAGE);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "El número y el monto no deben de estar vacios", "Error del sistema",JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
     }//GEN-LAST:event_jbtnPagarActionPerformed
     
     public int ActulizarContador(){

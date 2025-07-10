@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
 
 
 public class LeerArchivoTransacciones {
-    private int NroTrasaccionOTelef;
+    private String NroTrasaccionOTelef;
     private String fecha;
     private double monto;
     private String descripcion;
@@ -22,7 +22,7 @@ public class LeerArchivoTransacciones {
            BufferedReader br = new BufferedReader(fr);
            while((linea=br.readLine())!=null){
                StringTokenizer st = new StringTokenizer(linea,",");
-               NroTrasaccionOTelef = Integer.parseInt(st.nextToken());
+               NroTrasaccionOTelef = st.nextToken();
                fecha = st.nextToken();
                monto = Double.parseDouble(st.nextToken());
                descripcion = st.nextToken().trim();

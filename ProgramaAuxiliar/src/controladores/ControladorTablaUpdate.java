@@ -5,7 +5,6 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import modelos.Transaccion;
-import modelos.Usuario;
 
 public class ControladorTablaUpdate {
     private int contador;

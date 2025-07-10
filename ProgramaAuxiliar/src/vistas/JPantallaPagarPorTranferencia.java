@@ -1,16 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package vistas;
 
 import controladores.ControladorTablaUpdate;
 import controladores.ControladorVaciarTabla;
+import controladores.ValidarDatosTransaccionPorTransferencia;
+import excepciones.InvalidNroCuentaBancariaException;
+import excepciones.InvalidValueMontoException;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.time.LocalDateTime;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import modelos.EscribirArchivoTransacciones;
 import modelos.Usuario;
 
 /**
@@ -211,27 +211,44 @@ public class JPantallaPagarPorTranferencia extends javax.swing.JFrame {
     }//GEN-LAST:event_jtxtNroCuentaActionPerformed
 
     private void jbtnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPagarActionPerformed
-        int numCuenta = Integer.parseInt(jtxtNroCuenta.getText());
-        double monto = Double.parseDouble(jtxtMonto.getText());
+        String numCuenta = jtxtNroCuenta.getText();
+        String monto = jtxtMonto.getText();
         String descripcion = jtxtDescripcion.getText();
-        
+
         Usuario usuario = pantallaPrincipal.getUsuario();
-        //setear el valor del nuevo sueldo
-        usuario.setSaldo(usuario.getSaldo() - monto);
-        pantallaPrincipal.getTextFieldSaldo().setText(String.valueOf(usuario.getSaldo()));//Traspasa los valor de archivo     
         
-        //registrar transaccion
-        LocalDateTime fechahora = LocalDateTime.now();
-        String fecha = String.valueOf(fechahora);
-        usuario.registrarTransaccion(numCuenta, fecha, monto, descripcion, "transferencia");
-        //Actualizar en tabla
-        //int index = usuario.getTransacciones().size()-1;
-        ControladorVaciarTabla vaciarTabla = new ControladorVaciarTabla(ModeloTabla, pantallaPrincipal.getJTabla());
-        ControladorTablaUpdate tablaUpdate = new ControladorTablaUpdate(ModeloTabla, pantallaPrincipal.getUsuario().getTransacciones());
-        tablaUpdate.ActualizarTabla();
-        //EscribirArchivoTransacciones archivo = new EscribirArchivoTransacciones();
-        //archivo.EscribirArchivo(numTelef, monto, descripcion, "Telefono");//prueba de escritura  
-        this.dispose();
+        ValidarDatosTransaccionPorTransferencia validarDatos = new ValidarDatosTransaccionPorTransferencia();
+        
+        if(!numCuenta.isEmpty()&& !monto.isEmpty()){
+            try{
+                if(validarDatos.validarNumeroCtaBancaria(numCuenta) && validarDatos.validarMonto(monto, usuario.getSaldo())){
+                    double montoValidado = Double.parseDouble(monto);
+                    
+                    //setear el valor del nuevo sueldo
+                    usuario.setSaldo(usuario.getSaldo() - montoValidado);
+                    pantallaPrincipal.getTextFieldSaldo().setText(String.valueOf(usuario.getSaldo()));//Traspasar el valor del saldo a la pantalla principal
+                    
+                    //registrar transaccion
+                    LocalDateTime fechahora = LocalDateTime.now();
+                    String fecha = String.valueOf(fechahora);
+                    usuario.registrarTransaccion(numCuenta, fecha, montoValidado, descripcion, "transferencia");
+                    
+                    //Actualizar en tabla
+                    ControladorVaciarTabla vaciarTabla = new ControladorVaciarTabla(ModeloTabla, pantallaPrincipal.getJTabla());// limpia la pantalla a travez del constructor
+                    ControladorTablaUpdate tablaUpdate = new ControladorTablaUpdate(ModeloTabla, pantallaPrincipal.getUsuario().getTransacciones());
+                    tablaUpdate.ActualizarTabla();
+
+                    this.dispose();
+                }
+            }catch(InvalidNroCuentaBancariaException e) {
+                JOptionPane.showMessageDialog(null, "Número telefónico inválido: " + e.getMessage(), "Dato Invalido", JOptionPane.WARNING_MESSAGE);
+            }catch (InvalidValueMontoException e) {
+                JOptionPane.showMessageDialog(null, "Monto inválido: " + e.getMessage(), "Dato Invalido", JOptionPane.WARNING_MESSAGE);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "El número de cuenta y el monto no deben de estar vacios", "Error del sistema",JOptionPane.ERROR_MESSAGE);
+        }
+        
     }//GEN-LAST:event_jbtnPagarActionPerformed
 
     public int ActulizarContador(){

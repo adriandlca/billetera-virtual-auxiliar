@@ -6,7 +6,7 @@ package controladores;
 
 import excepciones.ActivationFileReadException;
 
-public class ControladorActivador {
+public class ValidadorCodigoActivador {
 
     public boolean validarActivacion(String codigoActivador) throws ActivationFileReadException{
         if(!"1".equals(codigoActivador)){

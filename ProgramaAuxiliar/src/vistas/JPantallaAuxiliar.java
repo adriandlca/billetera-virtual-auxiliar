@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import modelos.EscribirArchivoDatosActualizados;
 import modelos.EscribirArchivoTransacciones;
 import modelos.LeerArchivoTransacciones;
 import modelos.LeerArchivoUsuario;
@@ -77,6 +78,10 @@ public class JPantallaAuxiliar extends javax.swing.JFrame {
                    //ACTUALIZAR LOS DATOS DEL ARCHIVO "Usuario.db"
                    TransacribirArchivoUsuario archivoUsuario = new TransacribirArchivoUsuario();
                    archivoUsuario.EscribirArchivo(user);
+                   
+                   EscribirArchivoDatosActualizados archivoDatosActualizados = new EscribirArchivoDatosActualizados();
+                   archivoDatosActualizados.EscribirArchivo(user.getTransacciones(), user.getSaldo());
+     
                    System.exit(0);
                }
            }
