@@ -108,7 +108,7 @@ public class PantallaP extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("PantallaPrincipal");
+        setTitle("Pantalla Principal");
         setBackground(new java.awt.Color(245, 247, 250));
 
         lblBienvenida.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
@@ -134,7 +134,6 @@ public class PantallaP extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10), "Resumen de cuenta", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Rockwell", 1, 14))); // NOI18N
 
         lblSaldo.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
-        lblSaldo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Documents\\NetBeansProjects\\Programa_Principal\\icons\\salary.png")); // NOI18N
         lblSaldo.setText("Saldo actual: S/ 0.00");
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);

@@ -48,6 +48,7 @@ public class PantallaRegistro extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Registro");
 
         jPanel1.setBackground(new java.awt.Color(245, 247, 250));
 
@@ -57,7 +58,6 @@ public class PantallaRegistro extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(28, 31, 74));
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Documents\\NetBeansProjects\\Programa_Principal\\icons\\user.png")); // NOI18N
         jLabel2.setText("Nombre completo:");
 
         txtNombre.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
@@ -65,7 +65,6 @@ public class PantallaRegistro extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(28, 31, 74));
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Documents\\NetBeansProjects\\Programa_Principal\\icons\\calendar.png")); // NOI18N
         jLabel3.setText("Edad:");
 
         txtEdad.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
@@ -73,7 +72,6 @@ public class PantallaRegistro extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(28, 31, 74));
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Documents\\NetBeansProjects\\Programa_Principal\\icons\\driver-license.png")); // NOI18N
         jLabel4.setText("DNI:");
 
         txtDni.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
@@ -81,7 +79,6 @@ public class PantallaRegistro extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(28, 31, 74));
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Documents\\NetBeansProjects\\Programa_Principal\\icons\\iphone.png")); // NOI18N
         jLabel5.setText("Número de teléfono:");
 
         txtTelefono.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
@@ -89,7 +86,6 @@ public class PantallaRegistro extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(28, 31, 74));
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Documents\\NetBeansProjects\\Programa_Principal\\icons\\lock.png")); // NOI18N
         jLabel6.setText("Contraseña:");
 
         txtContra.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
@@ -99,7 +95,6 @@ public class PantallaRegistro extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(94, 96, 206));
         jButton1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Documents\\NetBeansProjects\\Programa_Principal\\icons\\check.png")); // NOI18N
         jButton1.setText("Registrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

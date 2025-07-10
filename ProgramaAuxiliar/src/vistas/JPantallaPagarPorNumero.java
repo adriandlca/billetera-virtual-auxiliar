@@ -77,6 +77,7 @@ public class JPantallaPagarPorNumero extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Transaccion por transferencia bancaria");
 
         jPanel2.setBackground(new java.awt.Color(30, 30, 47));
 

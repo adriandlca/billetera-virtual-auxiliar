@@ -31,6 +31,7 @@ public class jPantallaInicio extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Inicio");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(30, 30, 47));

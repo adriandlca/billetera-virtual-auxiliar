@@ -65,6 +65,7 @@ public class JPantallaPagarPorTranferencia extends javax.swing.JFrame {
         jbtnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Transaccion por transferencia bancaria");
         setResizable(false);
 
         fondo.setBackground(new java.awt.Color(30, 30, 47));
