@@ -51,6 +51,7 @@ public class ControladorFiltro {
                 }
             }
         }
+        Collections.reverse(listaCopia);
         filtrarTabla();
     }
     
@@ -65,11 +66,10 @@ public class ControladorFiltro {
                 }
             }
         }
-        Collections.reverse(listaCopia);
         filtrarTabla();
     }
     
-    public void ordenarPorTransferencia(){
+    public void ordenarPorNumeroTelefonico(){
        ArrayList ListaTelef = new ArrayList<>();
        for(Transaccion tr: listaCopia){
            if(tr.getTipoTransaccion().equalsIgnoreCase("telefono")){
@@ -81,7 +81,7 @@ public class ControladorFiltro {
        tablaUpdate.ActualizarTabla();
     }
     
-    public void ordenarPorNumeroTelefonico(){
+    public void ordenarPorTransferencia(){
         ArrayList ListaTelef = new ArrayList<>();
        for(Transaccion tr: listaCopia){
            if(tr.getTipoTransaccion().equalsIgnoreCase("transferencia")){

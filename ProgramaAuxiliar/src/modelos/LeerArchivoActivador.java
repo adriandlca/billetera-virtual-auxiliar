@@ -13,7 +13,7 @@ public class LeerArchivoActivador {
     public void leerArchivo() throws LoadActivationFileException{
         try{
            String linea;
-           FileReader fr =new FileReader("activador.txt");
+           FileReader fr =new FileReader("../SimuladorDeProcesos/Activador.txt");
            BufferedReader br = new BufferedReader(fr);
            while((linea=br.readLine())!=null){
                StringTokenizer st = new StringTokenizer(linea);

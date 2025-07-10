@@ -18,9 +18,8 @@ public class EscribirArchivoDatosActualizados {
     public void EscribirArchivo(ArrayList<Transaccion> transacciones, double saldo){      
         try{
             this.transacciones = transacciones;
-            FileWriter fw = new FileWriter("DatosActualizados.txt");
+            FileWriter fw = new FileWriter("../Programa_Principal/DatosActualizados.txt");
             PrintWriter pw = new PrintWriter(fw);
-            
             Transaccion transaccion = this.transacciones.get(this.transacciones.size()-1);
             pw.println(saldo+","+transaccion.getNumTelefoNroCuenta()+","+transaccion.getFecha()+","+transaccion.getMonto()+","+transaccion.getDescripcion()+","+transaccion.getTipoTransaccion());
             pw.close();

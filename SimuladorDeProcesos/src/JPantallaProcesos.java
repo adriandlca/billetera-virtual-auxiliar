@@ -39,7 +39,7 @@ public class JPantallaProcesos extends javax.swing.JFrame {
             if(cantidadDeProcesos >90.0 ){
                 timer.stop();
                 EscribirArchivoActivador archivo = new EscribirArchivoActivador();
-                archivo.Activar("../ProgramaAuxiliar/activador.txt");
+                archivo.Activar("Activador.txt");
                 JOptionPane.showMessageDialog(null, "Los servidores han caidoo!!!");
             }
         });
